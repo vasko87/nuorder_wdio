@@ -1,0 +1,82 @@
+{
+  "users": {
+    "admin": {
+      "name": "Maria Vasko",
+      "email": "maria.vasko@nuorder.com",
+      "password": "MariaVasko1"
+    }
+  },
+
+  "bvt_suite":{
+    "brand":[
+      {
+        "id":"59273bf785c5b800016bb372",
+        "name":"Sloth Town",
+        "order_data":[
+          {
+            "details":{
+              "company":"My New Company",
+              "buyer":"My New Buyer",
+              "sales_rep":"Brand Admin"
+            }
+          }
+        ],
+        "products":[
+          {
+            "id":"59273d4439a3960001591728",
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active",
+            "datatest":"item-ALL_WAREHOUSE-8,spring 2017,ao",
+            "brand_id":"59273bf785c5b800016bb372"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active",
+            "data-test":"item-ALL_WAREHOUSE-8,spring 2017,ao"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active"
+          },
+          {
+            "name":"belarus",
+            "season":"spring 2017",
+            "color":"ao",
+            "warehouse":"LA + EUR",
+            "visibility":"Active"
+          }
+        ]
+      }
+    ]
+  }
+}
