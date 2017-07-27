@@ -1,0 +1,23 @@
+{
+  "users":{
+    "admin": [
+      {
+        "name": "Maria Vasko",
+        "email": "maria.vasko@nuorder.com",
+        "password": "MariaVasko1"
+      }
+    ],
+    "invalid":[
+      {
+        "email": "",
+        "password": "not_exist",
+        "error":"This field is required."
+      },
+      {
+        "email": "not_exist@nuorder.com",
+        "password": "not_exist",
+        "error":"Invalid email and or password"
+      }
+    ]
+  }
+}

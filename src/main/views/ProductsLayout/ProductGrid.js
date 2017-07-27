@@ -3,22 +3,22 @@
 
 var ViewsBase = require("./../../lib/ViewsBase.js");
 
-class ProductsGrid extends ViewsBase {
+class ProductGrid extends ViewsBase {
 
     /**
      * Returns the product entity
      *
      * @param productData
-     * @returns {Product}
+     * @returns {ProductInGrid}
      */
-    getProduct(productData){
-        return new (require("./Product.js"))(productData);
+    getProduct(productData) {
+        return new (require("./ProductGrid/ProductInGrid"))(productData);
     }
 
-    get mainContainer(){
+    get mainContainer() {
         return browser.element(".itemsLayout").element(".itemsMainColumn");
     }
 
 }
 
-module.exports = ProductsGrid;
+module.exports = ProductGrid;

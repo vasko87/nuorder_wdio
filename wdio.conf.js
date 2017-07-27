@@ -10,8 +10,18 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './tests/**/*.js'
+        './tests/**/*.spec.js'
     ],
+
+    suites: {
+        BVT: [
+            './tests/BVT/*.spec.js'
+        ],
+        otherFeature: [
+            // ...
+        ]
+    },
+
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -32,7 +42,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -42,7 +52,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
         browserName: 'chrome'
     }],
@@ -75,7 +85,7 @@ exports.config = {
     baseUrl: 'https://app.staging.nuorder.com',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 50000,
+    waitforTimeout: 30000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -106,7 +116,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],//
+    // services: ['selenium-standalone'],
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html
@@ -124,7 +134,7 @@ exports.config = {
     jasmineNodeOpts: {
         //
         // Jasmine default timeout
-        defaultTimeoutInterval: 50000,
+        defaultTimeoutInterval: 30000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
@@ -160,8 +170,10 @@ exports.config = {
     },
     //
     // Hook that gets executed before the suite starts
-    // beforeSuite: function (suite) {
-    // },
+    beforeSuite: function (suite) {
+        log("SUITE started...");
+        browser.go('https://app.staging.nuorder.com');
+    },
     //
     // Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
     // beforeEach in Mocha)
@@ -175,8 +187,7 @@ exports.config = {
     //
     // Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
      beforeTest: function (test) {
-        log("TEST \x1b[1m'" + test.title +"' \x1b[0m started...");
-        browser.go('https://app.staging.nuorder.com');
+        log("STEP \x1b[1m'" + test.title +"' \x1b[0m started...");
      },
     //
     // Runs before a WebdriverIO command gets executed.
@@ -189,14 +200,14 @@ exports.config = {
     //
     // Function to be executed after a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
      afterTest: function (test) {
-        log("[ AFTER TEST ACTIONS ]:");
-         views.navigationPanel.logout();
+        log("");
        // browser.end();
      },
     //
     // Hook that gets executed after the suite has ended
-    // afterSuite: function (suite) {
-    // },
+    afterSuite: function (suite) {
+        views.navigationPanel.logout();
+    },
     //
     // Gets executed after all tests are done. You still have access to all global variables from
     // the test.
@@ -212,5 +223,6 @@ exports.config = {
     // onComplete: function(exitCode) {
     // }
     onError: function() {
+        error("!!!!!!ERROR" + this.error.message);
     }
 }

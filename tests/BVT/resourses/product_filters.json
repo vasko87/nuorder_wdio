@@ -1,0 +1,47 @@
+{
+  "filters":[
+    {
+      "by":"color",
+      "value":"raspberry+rose",
+      "products":[
+        {
+          "name": "BELARUS"
+        },
+        {
+          "name": "CROATIA"
+        },
+        {
+          "name": "US AND THEM"
+        },
+        {
+          "name": "UNDER MY THUMB"
+        },
+        {
+          "name": "SHOW ME THE WAY"
+        }
+      ],
+      "products_invisible":[
+        {
+          "name": "BURMA"
+        }
+      ]
+    },
+    {
+      "by":"season",
+      "value":"live+bug",
+      "products":[
+        {
+          "name": "BELARUS"
+        },
+        {
+          "name": "BURMA"
+        }
+      ],
+      "products_invisible":[
+        {
+          "name": "SHOW ME THE WAY"
+        }
+      ]
+    }
+  ]
+}

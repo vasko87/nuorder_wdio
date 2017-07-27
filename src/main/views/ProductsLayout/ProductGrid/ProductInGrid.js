@@ -1,15 +1,14 @@
 "use strict";
 /** @class browser */
 
-var ViewsBase = require("./../../lib/ViewsBase.js");
-var ProductPreview = require("./Product/ProductPreview.js");
-var ProductDetailView = require("./Product/ProductDetailView.js");
+var ViewsBase = require("./../../../lib/ViewsBase.js");
+var ProductPreview = require("./../ProductPreview.js");
+var ProductDetailView = require("./../../ProductDetailView.js");
 
-class Product extends ViewsBase {
+class ProductInGrid extends ViewsBase {
     constructor(productData) {
         super();
         this.preview = new ProductPreview(productData);
-        this.details = new ProductDetailView(productData);
 
         this.productData = productData;
         this.id = productData.datatest;
@@ -31,9 +30,9 @@ class Product extends ViewsBase {
      * Returns the product entity
      *
      * @param productData
-     * @returns {Product}
+     * @returns {ProductInGrid}
      */
-    getProduct(productData){
+    getProduct(productData) {
         return new this(productData);
     }
 
@@ -42,39 +41,52 @@ class Product extends ViewsBase {
     //     browser.clickElement(this.buttonAddToCart);
     // }
 
-    get mainContainer(){
+    get mainContainer() {
         return browser.element("[data-test='" + this.id + "']");
     }
 
-    get imageProduct(){
+    get imageProduct() {
         return this.mainContainer.element(".imageHolder");
     }
 
     /**
      * Clicks on the product Image to open Preview Panel
      *
-     * @returns {Product}
+     * @returns {ProductInGrid}
      */
-    clickImage(){
-        browser.hoverElement(this.imageProduct);
+    clickImage() {
         browser.clickElement(this.imageProduct);
+        this.preview.mainContainer.waitForVisible();
 
         return this;
     }
 
     /**
-     * Verifies Product Is Visible In ProductsGrid Grid
+     * Verifies Product Is Visible In ProductGrid Grid
      *
      * @param {Boolean} isVisible - true or false
-     * @returns {Product}
+     * @returns {ProductInGrid}
      */
-    assertVisibleInGrid(isVisible){
-        log("Verifying product '" + this.productData.name + "' is visible in products grid");
-        expect(views.gallery.subGrid.mainContainer.element("h1*=" + this.productData.name).isVisible()).toBe(isVisible);
+    verifyVisibleInGrid() {
+        log("Verifying product '" + this.productData.name + "' is visible in products grid..");
+        browser.verifyElementIsVisible(views.gallery.productGrid.mainContainer.element("h1*=" + this.productData.name));
+
+        return this;
+    }
+
+    /**
+     * Verifies Product Is Not Visible In ProductGrid Grid
+     *
+     * @param {Boolean} isVisible - true or false
+     * @returns {ProductInGrid}
+     */
+    verifyNotVisibleInGrid() {
+        log("Verifying product '" + this.productData.name + "' is not visible in products grid..");
+        browser.verifyElementIsNotVisible(views.gallery.productGrid.mainContainer.element("h1*=" + this.productData.name));
 
         return this;
     }
 
 }
 
-module.exports = Product;
+module.exports = ProductInGrid;

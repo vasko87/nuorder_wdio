@@ -1,0 +1,23 @@
+{
+  "name": "wdio_nuorder",
+  "version": "1.0.0",
+  "description": "Test automation for NuORDER",
+  "main": "bootstrap.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "wdio-spec-reporter": "^0.1.0",
+    "wdio-jasmine-framework": "^0.3.1",
+    "webdriverio": "^4.8.0"
+
+  },
+  "devDependencies": {
+    "wdio-selenium-standalone-service": "~0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vasko87",
+  "license": "ISC"
+}

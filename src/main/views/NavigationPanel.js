@@ -4,119 +4,125 @@
 var ViewsBase = require("./../lib/ViewsBase.js");
 
 class NavigationPanel extends ViewsBase {
-    get navPanel(){
-        return $("[role='navigation']");
+    get navPanel() {
+        return browser.element(".//nav[@role='navigation']/div/a");
     }
 
-    get labelHome(){
-        return $("a*=Home");
+    get labelHome() {
+        return browser.element("span=Home");
     }
 
-    get labelLinesheets(){
-        return $("a*=Linesheets");
+    get labelProducts() {
+        return browser.element("span=Products");
     }
 
-    get labelCustomLists(){
-        return $("a*=Custom Lists");
+    get labelLinesheets() {
+        return browser.element("span=Linesheets");
     }
 
-    get labelContacts(){
-        return $("a*=Contacts");
+    get labelCustomLists() {
+        return browser.element("span=Custom Lists");
     }
 
-    get labelOrders(){
-        return $("a*=Orders");
+    get labelContacts() {
+        return browser.element("span=Contacts");
     }
 
-    get labelCampaigns(){
-        return $("a*=Campaigns");
+    get labelOrders() {
+        return browser.element("span=Orders");
     }
 
-    get labelViewCompaigns(){
-        return $("a*=View Compaigns");
+    get labelCampaigns() {
+        return browser.element("span=Campaigns");
     }
 
-    get labelViewContactGroups(){
-        return $("a*=View Contact Groups");
+    get labelViewCompaigns() {
+        return browser.element("span=View Compaigns");
     }
 
-    get labelCreateSmartGroup(){
-        return $("a*=Create a Smart Group");
+    get labelViewContactGroups() {
+        return browser.element("span=View Contact Groups");
     }
 
-    get labelCreateFixedGroup(){
-        return $("a*=Create a Fixed Group");
+    get labelCreateSmartGroup() {
+        return browser.element("span=Create a Smart Group");
     }
 
-    get labelMedia(){
-        return $("a*=Media");
+    get labelCreateFixedGroup() {
+        return browser.element("span=Create a Fixed Group");
     }
 
-    get labelReporting(){
-        return $("a*=Reporting");
+    get labelMedia() {
+        return browser.element("span=Media");
     }
 
-    get labelMarketplace(){
-        return $("a*=Marketplace");
+    get labelReporting() {
+        return browser.element("span=Reporting");
     }
 
-    get labelFindNewBrands(){
-        return $("a*=Find New Brands");
+    get labelMarketplace() {
+        return browser.element("span=Marketplace");
     }
 
-    get labelFindNewAccounts(){
-        return $("a*=Find New Accounts");
+    get labelFindNewBrands() {
+        return browser.element("span=Find New Brands");
     }
 
-    get labelSettings(){
-        return $("a*=Settings");
+    get labelFindNewAccounts() {
+        return browser.element("span=Find New Accounts");
     }
 
-    get labelBrandAdmin(){
-        return $("a*=Brand Admin");
+    get labelSettings() {
+        return browser.element("span=Settings");
     }
 
-    get labelBrandManagemant(){
-        return $("a*=Brand Managemant");
+    get labelBrandAdmin() {
+        return browser.element("span=Brand Admin");
     }
 
-    get labelNuORDERUtilities(){
-        return $("a*=NuORDER Utilities");
+    get labelBrandManagemant() {
+        return browser.element("span=Brand Managemant");
     }
 
-    get labelRetailerSettings(){
-        return $("a*=Retailer Settings");
+    get labelNuORDERUtilities() {
+        return browser.element("span=NuORDER Utilities");
     }
 
-    get labelTheWall(){
-        return $("a*=The Wall");
+    get labelRetailerSettings() {
+        return browser.element("span=Retailer Settings");
     }
 
-    get iconAvatar(){
-        return $("[class='avatar circle']");
+    get labelTheWall() {
+        return browser.element("span=The Wall");
     }
 
-    get labelAvatarName(){
-        return $("div.name");
+    get iconAvatar() {
+        return browser.element("[class='avatar circle']");
     }
 
-    get labelAvatarEmail(){
-        return $("div.email");
+    get labelAvatarName() {
+        return browser.element("div.name");
     }
 
-    get labelEditProfile(){
-        return $("a*=Edit Profile");
+    get labelAvatarEmail() {
+        return browser.element("div.email");
     }
 
-    get labelLogout(){
-        return $("a*=Logout");
+    get labelEditProfile() {
+        return browser.element("span=Edit Profile");
+    }
+
+    get labelLogout() {
+        return browser.element("span=Logout");
     }
 
     /**
      * Verifies all sections are visible
+     * @returns {NuorderViews}
      */
     verifyAllSectionsDisplay() {
         log("Verifying all 'Navigation Panel' sections are displayed: ");
+        this.hoverNavigationPanel();
         browser.verifyElementIsVisible(this.labelHome);
         browser.verifyElementIsVisible(this.labelLinesheets);
         browser.verifyElementIsVisible(this.labelCustomLists);
@@ -129,57 +135,74 @@ class NavigationPanel extends ViewsBase {
         browser.verifyElementIsVisible(this.labelTheWall);
         browser.verifyElementIsVisible(this.labelTheWall);
         browser.verifyElementIsVisible(this.iconAvatar);
+
+        browser.pause(1000);
+
+        return this;
     }
 
     /**
      * Mouse-over Navigation Panel
+     * @returns {NuorderViews}
      */
-    hoverNavigationPanel(){
-        console.log("INFO: Moving mouse over Navigation Panel");
-        this.navPanel.waitForVisible();
-        this.navPanel.moveTo();
+    hoverNavigationPanel() {
+        log("Moving mouse over Navigation Panel");
+        browser.hoverElement(this.navPanel);
+
+        return this;
     }
 
     /**
      * Mouse-over Campaigns label
      * - mouse-over Navigation panel
      * - mouse over Campaigns
+     * @returns {NuorderViews}
      */
-    hoverCampaigns(){
+    hoverCampaigns() {
         hoverNavigationPanel();
-        console.log("INFO: Moving mouse over Campaigns label ");
-        this.labelCampaigns.moveTo();
+        log("Moving mouse over Campaigns label ");
+        browser.hoverElement(this.labelCampaigns);
+
+        return this;
     }
 
     /**
      * Mouse-over Marketplace label
      * - mouse-over Navigation panel
      * - mouse over Marketplace
+     * @returns {NuorderViews}
      */
-    hoverMarketplace(){
+    hoverMarketplace() {
         hoverNavigationPanel();
-        console.log("INFO: Moving mouse over Marketplace label");
-        this.labelMarketplace.moveTo();
+        log("Moving mouse over Marketplace label");
+        browser.hoverElement(this.labelMarketplace);
+
+        return this;
     }
 
     /**
      * Mouse-over Settings label
      * - mouse-over Navigation panel
      * - mouse over Settings
+     * @returns {NuorderViews}
      */
-    hoverSettings(){
+    hoverSettings() {
         hoverNavigationPanel();
-        console.log("INFO: Moving mouse over Settings label");
-        this.labelSettings.moveTo();
+        log("Moving mouse over Settings label");
+        browser.hoverElement(this.labelSettings);
+
+        return this;
     }
 
     /**
      * Mouse-over Avatar Icon
      * - mouse-over Navigation panel
      * - mouse over Avatar Icon
+     * @returns {NuorderViews}
      */
-    hoverAvatarIcon(){
+    hoverAvatarIcon() {
         browser.hoverElement(this.iconAvatar);
+
         return views;
     }
 
@@ -187,66 +210,98 @@ class NavigationPanel extends ViewsBase {
      * Navigates to Home page page:
      * - mouse-over Navigation Panel
      * - clicks on Home label
+     * @returns {NuorderViews}
      */
-    gotoHome(){
+    gotoHome() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Home page");
+        log("Navigating to Home page");
         this.labelHome.click();
+
+        return this;
+    }
+
+    /**
+     * Navigates to Products page:
+     * - mouse-over Navigation Panel
+     * - clicks on Products label
+     * @returns {NuorderViews}
+     */
+    gotoProducts() {
+        this.hoverNavigationPanel();
+        log("Navigating to Products page");
+        browser.clickElement(this.labelProducts);
+
+        return this;
     }
 
     /**
      * Navigates to Linesheets page:
      * - mouse-over Navigation Panel
      * - clicks on Linesheets label
+     * @returns {NuorderViews}
      */
-    gotoLinesheets(){
+    gotoLinesheets() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Linesheets page");
-        this.labelLinesheets.click();
+        log("Navigating to Linesheets page");
+        browser.clickElement(this.labelLinesheets);
+
+        return this;
     }
 
     /**
      * Navigates to Custom Lists page:
      * - mouse-over Navigation panel
      * - clicks on Custom Lists label
+     * @returns {NuorderViews}
      */
-    gotoCustomLists(){
+    gotoCustomLists() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Custom Lists page");
-        this.labelCustomLists.click();
+        log("Navigating to Custom Lists page");
+        browser.clickElement(this.labelCustomLists);
+
+        return this;
     }
 
     /**
      * Navigates to Contacts page:
      * - mouse-over Navigation panel
      * - clicks on Contacts label
+     * @returns {NuorderViews}
      */
-    gotoContacts(){
+    gotoContacts() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Contacts page");
+        log("Navigating to Contacts page");
         this.labelContacts.click();
+
+        return this;
     }
 
     /**
      * Navigates to Orders page:
      * - mouse-over Navigation panel
      * - clicks on Orders label
+     * @returns {NuorderViews}
      */
-    gotoOrders(){
+    gotoOrders() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Orders page");
-        this.labelOrders.click();
+        log("Navigating to Orders page");
+        browser.clickElement(this.labelOrders);
+
+        return this;
     }
 
     /**
      * Navigates to Campaigns page:
      * - mouse-over Navigation panel
      * - clicks on Campaigns label
+     * @returns {NuorderViews}
      */
-    gotoCampaigns(){
+    gotoCampaigns() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Campaigns page");
+        log("Navigating to Campaigns page");
         this.labelCampaigns.click();
+
+        return this;
     }
 
     /**
@@ -254,11 +309,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation Panel
      * - mouse-over Compaigns
      * - clicks on View Campaigns label
+     * @returns {NuorderViews}
      */
-    gotoCampaigns_ViewCampaigns(){
+    gotoCampaigns_ViewCampaigns() {
         this.hoverCampaigns();
-        console.log("INFO: Navigating to Campaigns -> View Campaigns");
+        log("Navigating to Campaigns -> View Campaigns");
         this.labelViewCompaigns.click();
+
+        return this;
     }
 
     /**
@@ -266,11 +324,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation Panel
      * - mouse-over Compaigns
      * - clicks on Contact Groups label
+     * @returns {NuorderViews}
      */
-    gotoCampaigns_ViewContactGroups(){
+    gotoCampaigns_ViewContactGroups() {
         this.hoverCampaigns();
-        console.log("INFO: Navigating to Campaigns -> Contact Groups");
+        log("Navigating to Campaigns -> Contact Groups");
         this.labelViewContactGroups.click();
+
+        return this;
     }
 
     /**
@@ -278,11 +339,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation Panel
      * - mouse-over Compaigns
      * - clicks on Create a Smart Group label
+     * @returns {NuorderViews}
      */
-    gotoCampaigns_CreateSmartGroup(){
+    gotoCampaigns_CreateSmartGroup() {
         this.hoverCampaigns();
-        console.log("INFO: Navigating to Campaigns -> Create a Smart Group");
+        log("Navigating to Campaigns -> Create a Smart Group");
         this.labelCreateSmartGroup.click();
+
+        return this;
     }
 
     /**
@@ -290,44 +354,56 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation Panel
      * - mouse-over Compaigns
      * - clicks on Create a Fixed Group label
+     * @returns {NuorderViews}
      */
-    gotoCampaigns_CreateFixedGroup(){
+    gotoCampaigns_CreateFixedGroup() {
         this.hoverCampaigns();
-        console.log("INFO: Navigating to Campaigns -> Create a Fixed Group");
+        log("Navigating to Campaigns -> Create a Fixed Group");
         this.labelCreateFixedGroup.click();
+
+        return this;
     }
 
     /**
      * Navigates to Media page:
      * - mouse-over Navigation panel
      * - clicks on Media label
+     * @returns {NuorderViews}
      */
-    gotoMedia(){
+    gotoMedia() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Media page");
+        log("Navigating to Media page");
         this.labelMedia.click();
+
+        return this;
     }
 
     /**
      * Navigates to Reporting page:
      * - mouse-over Navigation panel
      * - clicks on Reporting label
+     * @returns {NuorderViews}
      */
-    gotoReporting(){
+    gotoReporting() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Reporting page");
+        log("Navigating to Reporting page");
         this.labelReporting.click();
+
+        return this;
     }
 
     /**
      * Navigates to Marketplace page:
      * - mouse-over Navigation panel
      * - clicks on Marketplace label
+     * @returns {NuorderViews}
      */
-    gotoMarketplace(){
+    gotoMarketplace() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Marketplace page");
+        log("Navigating to Marketplace page");
         this.labelMarketplace.click();
+
+        return this;
     }
 
     /**
@@ -335,11 +411,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Marketplace label
      * - clicks on Find New Brands label
+     * @returns {NuorderViews}
      */
-    gotoMarketplace_FindNewBrands(){
+    gotoMarketplace_FindNewBrands() {
         this.hoverMarketplace();
-        console.log("INFO: Navigating to Marketplace -> Find New Brands");
+        log("Navigating to Marketplace -> Find New Brands");
         this.labelFindNewBrands.click();
+
+        return this;
     }
 
     /**
@@ -347,22 +426,28 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Marketplace label
      * - clicks on Find New Accounts label
+     * @returns {NuorderViews}
      */
-    gotoMarketplace_FindNewAccounts(){
+    gotoMarketplace_FindNewAccounts() {
         this.hoverMarketplace();
-        console.log("INFO: Navigating to Marketplace -> Find New Accounts");
+        log("Navigating to Marketplace -> Find New Accounts");
         this.labelFindNewBrands.click();
+
+        return this;
     }
 
     /**
      * Navigates to Settings page:
      * - mouse -over Navigation panel
      * - clicks on Settings page
+     * @returns {NuorderViews}
      */
-    gotoSettings(){
+    gotoSettings() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to Settings page");
+        log("Navigating to Settings page");
         this.labelSettings.click();
+
+        return this;
     }
 
     /**
@@ -370,11 +455,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Settings label
      * - clicks on Brand Admin label
+     * @returns {NuorderViews}
      */
-    gotoSettings_BrandAdmin(){
+    gotoSettings_BrandAdmin() {
         this.hoverSettings();
-        console.log("INFO: Navigating to Settings -> Brand Admin");
+        log("Navigating to Settings -> Brand Admin");
         this.labelBrandAdmin.click();
+
+        return this;
     }
 
     /**
@@ -382,11 +470,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Settings label
      * - clicks on Brand Managemant label
+     * @returns {NuorderViews}
      */
-    gotoSettings_BrandManagemant(){
+    gotoSettings_BrandManagemant() {
         this.hoverSettings();
-        console.log("INFO: Navigating to Settings -> Brand Managemant");
+        log("Navigating to Settings -> Brand Managemant");
         this.labelBrandManagemant.click();
+
+        return this;
     }
 
     /**
@@ -394,11 +485,14 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Settings label
      * - clicks on NuORDERUtilities label
+     * @returns {NuorderViews}
      */
-    gotoSettings_NuORDERUtilities(){
+    gotoSettings_NuORDERUtilities() {
         this.hoverSettings();
-        console.log("INFO: Navigating to Settings -> NuORDERUtilities");
+        log("Navigating to Settings -> NuORDERUtilities");
         this.labelNuORDERUtilities.click();
+
+        return this;
     }
 
     /**
@@ -406,46 +500,56 @@ class NavigationPanel extends ViewsBase {
      * - mouse-over Navigation panel
      * - mouse-over Settings label
      * - clicks on Retailer Settings label
+     * @returns {NuorderViews}
      */
-    gotoSettings_RetailerSettings(){
+    gotoSettings_RetailerSettings() {
         this.hoverSettings();
-        console.log("INFO: Navigating to Settings -> Retailer Settings");
+        log("Navigating to Settings -> Retailer Settings");
         this.labelRetailerSettings.click();
+
+        return this;
     }
 
     /**
      * Navigates to The Wall page:
      * - mouse-over Navigation Panel icon
      * - clicks on The Wall label
+     * @returns {NuorderViews}
      */
-    gotoTheWall(){
+    gotoTheWall() {
         this.hoverNavigationPanel();
-        console.log("INFO: Navigating to The Wall page");
+        log("Navigating to The Wall page");
         this.labelTheWall.click();
+
+        return this;
     }
 
     /**
      * Navigates to Edit Profile page:
      * - mouse -over Avatar icon
      * - clicks on Edit Profile page
+     * @returns {NuorderViews}
      */
-    gotoProfileEdit(){
+    gotoProfileEdit() {
         this.hoverAvatarIcon();
-        console.log("INFO: Navigating to Edit Profile page");
+        log("Navigating to Edit Profile page");
         this.labelEditProfile.click();
+
+        return this;
     }
 
     /**
      * Clicks on logout
      * - mouse-over Avatar icon
      * - clicks on logout label
+     * @returns {NuorderViews}
      */
-    logout(){
+    logout() {
         this.hoverAvatarIcon();
         log("Logout...");
         browser.clickElement(this.labelLogout);
 
-        return views;
+        return this;
     }
 }
 

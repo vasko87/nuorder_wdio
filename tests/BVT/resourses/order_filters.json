@@ -1,0 +1,44 @@
+{
+  "filters":[
+    {
+      "by":"status",
+      "value":"pending",
+      "orders":[
+        {
+          "number": "19970287"
+        },
+        {
+          "number": "19970161"
+        },
+        {
+          "number": "19967722"
+        }
+      ],
+      "orders_invisible":[
+        {
+          "number": "19970235"
+        },
+        {
+          "number": "6174139"
+        }
+      ]
+    },
+    {
+      "by":"currency_code",
+      "value":"GBP",
+      "orders":[
+        {
+          "number": "6174139"
+        }
+      ],
+      "orders_invisible":[
+        {
+          "number": "19970287"
+        },
+        {
+          "number": "19970287"
+        }
+      ]
+    }
+  ]
+}

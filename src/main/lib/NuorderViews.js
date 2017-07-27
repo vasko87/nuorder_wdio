@@ -23,6 +23,22 @@ class NuorderViews extends NuorderViewsBase {
     get workingOrder() {
         return this._getCachedView("WorkingOrder");
     }
+
+    get productDetails() {
+        return this._getCachedView("ProductDetailView");
+    }
+
+    get linesheets() {
+        return this._getCachedView("Linesheets");
+    }
+
+    get customLists() {
+        return this._getCachedView("CustomLists");
+    }
+
+    get orders() {
+        return this._getCachedView("Orders");
+    }
 }
 
 global.views = new NuorderViews();
