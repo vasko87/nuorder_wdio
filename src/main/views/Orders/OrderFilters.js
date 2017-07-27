@@ -10,7 +10,7 @@ class OrderFilters extends FiltersBase {
      *
      * @param page
      * @param filterData
-     * @returns {NuorderViews}
+     * @returns {OrderFilters}
      */
     filterByURL(filterData) {
 

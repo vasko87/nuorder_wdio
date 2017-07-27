@@ -14,8 +14,8 @@ exports.config = {
     ],
 
     suites: {
-        BVT: [
-            './tests/BVT/*.spec.js'
+        smoke: [
+            './tests/smoke/*.spec.js'
         ],
         otherFeature: [
             // ...

@@ -1,6 +1,6 @@
 var testData = require('./resourses/navigation.json');
 
-describe('BVT: NAVIGATIONS', function() {
+describe('smoke: NAVIGATIONS', function() {
 
     it('should login as Admin (superuser)', function () {
         views.loginView.login(globals.users.admin[0].email, globals.users.admin[0].password);

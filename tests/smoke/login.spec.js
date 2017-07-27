@@ -1,6 +1,6 @@
 var testData = require('./resourses/login.json');
 
-describe('BVT: LOGIN', function() {
+describe('smoke: LOGIN', function() {
 
     it('should NOT login with incorrect credantials - verifies error message', function () {
         for (i = 0; i < testData.users.invalid.length; i++){

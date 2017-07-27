@@ -1,6 +1,6 @@
 var testData = require('./resourses/order_filters.json');
 
-describe('BVT: ORDERS FILTERS', function() {
+describe('smoke: ORDERS FILTERS', function() {
 
     it('should login as Admin (superuser)', function () {
         views.loginView.login(globals.users.admin[0].email, globals.users.admin[0].password);

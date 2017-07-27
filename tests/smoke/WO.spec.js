@@ -1,6 +1,6 @@
 var testData = require('./resourses/WO.json');
 
-describe('BVT: WORKING ORDER', function() {
+describe('smoke: WORKING ORDER', function() {
 
     var brand = testData.brand[0];
     var order = testData.brand[0].order_data[0];
@@ -30,17 +30,12 @@ describe('BVT: WORKING ORDER', function() {
             .selectBuyer(order.details.buyer)
             .selectSalesRep(order.details.sales_rep)
             .getOrderNumber(order);
-        // views.workingOrder.orderDetails.selectBuyer(order.details.buyer);
-        // views.workingOrder.orderDetails.selectSalesRep(order.details.sales_rep);
-        // views.workingOrder.orderDetails.getOrderNumber(order);
     });
 
     it('should switch to Items&Deliveries page and enter Line Items data(LI fields, sizes)"', function () {
         views.workingOrder.orderItemsAndDeliveries.clickTab()
             .enterLineItemsFields(order.items_and_deliveries)
             .enterSizes(order.items_and_deliveries);
-        // views.workingOrder.orderItemsAndDeliveries.enterLineItemsFields(order.items_and_deliveries);
-        // views.workingOrder.orderItemsAndDeliveries.enterSizes(order.items_and_deliveries);
     });
 
     it('should click "Next" and "Submit" order', function () {

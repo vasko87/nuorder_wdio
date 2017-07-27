@@ -1,6 +1,6 @@
 var testData = require('./resourses/product_filters.json');
 
-describe('BVT: PRODUCT FILTERS', function() {
+describe('smoke: PRODUCT FILTERS', function() {
 
     it('should login as Admin (superuser)', function () {
         views.loginView.login(globals.users.admin[0].email, globals.users.admin[0].password);
